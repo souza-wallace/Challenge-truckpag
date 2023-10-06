@@ -1,0 +1,177 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Open food API",
+        "description": "Documentation API how to use endpoint products",
+        "contact": {
+            "email": "walizdesouza781@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api": {
+            "get": {
+                "tags": [
+                    "Log"
+                ],
+                "summary": "Get data log of import data cron",
+                "description": "Returns list of all Products",
+                "operationId": "getLog",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/products": {
+            "get": {
+                "tags": [
+                    "Index"
+                ],
+                "summary": "Get list of Products",
+                "description": "Returns list of all Products",
+                "operationId": "getProductsList",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/v1/products/{code}": {
+            "get": {
+                "tags": [
+                    "Show"
+                ],
+                "summary": "Get a specific product by code",
+                "description": "Returns a single product",
+                "operationId": "getproductByCode",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Code of product to return a specific product",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "update"
+                ],
+                "summary": "Update a specific product by code",
+                "description": "Update data of a specific product by code",
+                "operationId": "updateProduct",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Code of product to return a specific product",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "status": {
+                                        "type": "string",
+                                        "example": "accept trash|published|draft"
+                                    },
+                                    "product_name": {
+                                        "type": "string",
+                                        "example": "update name product"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Delete"
+                ],
+                "summary": "delete product by code",
+                "description": "delete product by code",
+                "operationId": "deleteproduct",
+                "parameters": [
+                    {
+                        "name": "code",
+                        "in": "path",
+                        "description": "Code of product to return a specific product",
+                        "required": true,
+                        "schema": {
+                            "type": "integer",
+                            "format": "int64"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "successful operation"
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

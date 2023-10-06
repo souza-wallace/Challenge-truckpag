@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Log extends Model
+{
+    protected $table = 'log';
+
+    protected $fillable = 
+    [
+        'memory_used',
+        'execution_time',
+        'execution_date'
+    ];
+}

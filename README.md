@@ -89,14 +89,31 @@ Adicione essa linha ao seu .env
 SCOUT_QUEUE=true
 ```
 
-Para Configurar seu scout veja a documentação em:  <a href="https://laravel.com/docs/10.x/scout#installation" target="_blank">Laravel Scout</a>
-```sh
-composer require algolia/algoliasearch-client-php
+Para Configurar seu scout acesse o:  <a href="https://laravel.com/docs/10.x/scout#installation" target="_blank">Algolia</a> e pegue os valores de Application ID e Admin API Key e adicione no seu .env
+```dosini
+ALGOLIA_APP_ID=**************
+ALGOLIA_SECRET=******************************
 ```
 
+Importe o horizon, ele fornece um belo painel e configuração baseada em código para suas filas Redis alimentadas pelo Laravel . O Horizon permite monitorar facilmente as principais métricas do seu sistema de filas, como taxa de transferência de trabalho, tempo de execução e falhas de trabalho.
+```sh
+composer require laravel/horizon
+```
 
+Execute o comando de importação dos dados
+```sh
+php artisan cron:importDataApi
+```
 
+Importe os dados para seu serviço de indexação
+```sh
+php artisan scout:import "App\Models\Product"
+```
 
+Execute o horizon para enviar os dados ao mongolia
+```sh
+php artisan scout:import "App\Models\Product"
+```
 
 Acesse o projeto
 [http://localhost:8989](http://localhost:8989)

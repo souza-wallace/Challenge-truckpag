@@ -17,10 +17,9 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
-Route::Resource('v1/products', ProductsController::class)->except(['store']); //->middleware('auth');
-Route::get('/', [LogApiController::class, 'index']); //->middleware('auth');
 Route::post('v1/auth', [AuthController::class, 'auth']);
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::Resource('v1/products', ProductsController::class)->except(['store']);
+    Route::get('/', [LogApiController::class, 'index']);
+});

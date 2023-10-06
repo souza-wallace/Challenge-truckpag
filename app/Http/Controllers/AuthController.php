@@ -9,6 +9,30 @@ use App\Models\User;
 
 class AuthController extends Controller
 {
+    /**
+     * @OA\Post(
+     *     path="/api/v1/auth",
+     *     tags={"auth"},
+     *     summary="Use this endpoint to get a token",
+     *     description="Use this endpoint to get a token, the token it will provide access to consume the api ",
+     *     operationId="getToken",
+     *     @OA\RequestBody(
+     *          required=true,
+     *          @OA\JsonContent(
+     *              type="object",
+     *              @OA\Property(property="email", type="string", example="test@example.com"),
+     *              @OA\Property(property="password", type="string", example="1234"),
+     *              @OA\Property(property="device_name", type="string", example="Swagger Client")
+     *          )
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *     ),
+     * )
+     *
+     * @param int $code
+     */
     public function auth(Request $request)
     {
         $credentials = $request->only([

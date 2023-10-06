@@ -13,6 +13,45 @@
         "version": "1.0.0"
     },
     "paths": {
+        "/api/v1/auth": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Use this endpoint to get a token",
+                "description": "Use this endpoint to get a token, the token it will provide access to consume the api ",
+                "operationId": "getToken",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "test@example.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "1234"
+                                    },
+                                    "device_name": {
+                                        "type": "string",
+                                        "example": "Swagger Client"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
         "/api": {
             "get": {
                 "tags": [

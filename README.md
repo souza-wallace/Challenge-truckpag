@@ -13,23 +13,20 @@ https://github.com/souza-wallace/truckpag.git
 cd truckpag
 ```
 
-
-Crie o Arquivo .env
-```sh
-cp .env.example .env
-```
-
 Suba os containers do projeto
 ```sh
 docker-compose up -d
 ```
-
 
 Acesse o container app
 ```sh
 docker-compose exec app bash
 ```
 
+Crie o Arquivo .env
+```sh
+cp .env.example .env
+```
 
 Instale as dependências do projeto
 ```sh
@@ -82,6 +79,21 @@ Importe o scout e Publique o serviço. Se precisar de alguma configuração extr
 composer require laravel/scout
 php artisan vendor:publish --provider="Laravel\Scout\ScoutServiceProvider"
 ```
+
+Importe o driver do algolia.
+```sh
+composer require algolia/algoliasearch-client-php
+```
+Adicione essa linha ao seu .env
+```dosini
+SCOUT_QUEUE=true
+```
+
+Para Configurar seu scout veja a documentação em:  <a href="https://laravel.com/docs/10.x/scout#installation" target="_blank">Laravel Scout</a>
+```sh
+composer require algolia/algoliasearch-client-php
+```
+
 
 
 
